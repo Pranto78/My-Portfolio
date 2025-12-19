@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+
+/* Night mode glass navbar */
+body.theme-night .navbar {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.008) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Day mode normal navbar */
+body.theme-day .navbar {
+    background: rgba(255, 255, 255, 1);
+}
+
+
+/* Day theme gradient colors */
+body.theme-day {
+    --gradient-start: #2563eb;
+    /* blue */
+    --gradient-end: #838d9c;
+    /* gray */
+}
+
+/* Night theme gradient colors */
+body.theme-night {
+    --gradient-start: #3b82f6;
+    /* bright blue */
+    --gradient-end: #838d9c;
+    /* soft gray/blue */
+}
+
+
+/* Skills card backgrounds: explicit day/night styles using theme-day/theme-night classes */
+
+/* Day: translucent white / light look (matches your Tailwind utility) */
+body.theme-day .skill-card {
+    background: rgba(255, 255, 255, 0.8);
+    /* similar to bg-slate-100/80 */
+    backdrop-filter: none;
+    border-color: rgba(15, 23, 42, 0.06);
+    /* subtle border for day (slate-200-ish) */
+}
+
+/* Night: translucent black so cards appear dark and transparent over navbar/canvas */
+body.theme-night .skill-card {
+    /* Use an rgba with enough opacity so it reads dark on top of a possibly light navbar */
+    background: rgba(0, 0, 0, 0.0002) !important;
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    border-color: rgba(255, 255, 255, 0.6);
+    /* faint border visible on dark */
+    color: #e6eef8;
+    /* fallback text color for dark */
+}
+
+/* If some utility classes are overriding background, force it more strongly */
+body.theme-night .skill-card,
+body.theme-night .skill-card * {
+    background-clip: padding-box;
+}
+
+/* Optional: tune the label color inside the card for night/day (if needed) */
+body.theme-night .skill-card .text-slate-700 {
+    color: #cbd5e1;
+    /* slate-300-ish, readable on dark bg */
+}
+
+
+.theme-toggle-pulse {
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle-pulse::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.35) 10%,
+            transparent 60%);
+    transform: scale(0.6);
+    opacity: 0;
+    animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
