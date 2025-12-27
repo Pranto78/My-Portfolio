@@ -1,21 +1,32 @@
-import { Outlet } from 'react-router';
-import Navbar from './../components/Navbar/Navbar';
-import Footer from './../components/Footer/Footer';
+import { Outlet } from "react-router";
+import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
+import OpeningLoading from "../components/OpeningLoading/OpeningLoading";
 
 
 const Root = () => {
+  const [loading, setLoading] = useState(true);
 
-  
-    return (
-        <div className=''>
-            <Navbar />
-            <Outlet />
-            <Footer />
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1200); // adjust if needed
 
-    
-        
-        </div>
-    );
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <OpeningLoading />;
+  }
+
+  return (
+    <div>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </div>
+  );
 };
 
 export default Root;
