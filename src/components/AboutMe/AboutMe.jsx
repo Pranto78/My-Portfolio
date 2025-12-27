@@ -28,6 +28,11 @@ const AboutMe = () => {
     typeText();
   }, []);
 
+  const cloudVariants = {
+    hidden: { opacity: 0, scale: 0.6, y: 20 },
+    visible: { opacity: 1, scale: 1, y: 0 },
+  };
+
   return (
     <div id="about-me" className="min-h-screen py-12 px-6">
       {/* Header */}
@@ -91,6 +96,7 @@ const AboutMe = () => {
         </motion.div>
 
         {/* Right Side - Premium zoom + fade Scroll animation */}
+        {/* Right Side - Premium zoom + fade Scroll animation */}
         <motion.div
           className="md:w-1/2 flex justify-center md:justify-end"
           initial={{ opacity: 0, scale: 0.8, y: 40 }}
@@ -98,13 +104,29 @@ const AboutMe = () => {
           transition={{ duration: 0.9, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div className="relative rounded-3xl shadow-lg glow-border">
+          <motion.div
+            className="relative rounded-3xl shadow-lg glow-border perspective-1000"
+            whileHover="visible"
+            initial="hidden"
+          >
             <img
               src={myPhoto}
               alt="My Photo"
               className="w-80 h-80 object-cover rounded-2xl"
             />
-          </div>
+
+            {/* Cloud Overlay */}
+            <motion.div
+              variants={cloudVariants}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="pointer-events-none absolute -top-30 -right-30 -translate-x-1/2 flex justify-center"
+            >
+              <div className="cloud">
+                <span className="cloud-text">Assalamu alaikum</span>
+                <span className="cloud-tail" />
+              </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -124,6 +146,56 @@ const AboutMe = () => {
         .glow-border {
           animation: glow 2s ease-in-out infinite;
           border-radius: 1rem;
+        }
+
+        .cloud {
+          position: relative;
+          width: 260px;
+          height: 135px;
+          background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.98),
+            rgba(255, 255, 255, 0.75)
+          );
+          border-radius: 80px;
+          box-shadow: 0 35px 70px rgba(0, 0, 0, 0.25),
+            inset 0 -12px 20px rgba(255, 255, 255, 0.6);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          filter: blur(0.2px);
+        }
+
+
+        .cloud-tail {
+          position: absolute;
+          bottom: -28px;
+          left: 50%;
+          width: 16px;
+          height: 16px;
+          background: rgba(255, 255, 255, 0.85);
+          border-radius: 50%;
+          transform: translateX(-50%);
+        }
+
+        .cloud-tail::after {
+          content: "";
+          position: absolute;
+          bottom: -14px;
+          left: -10px;
+          width: 9px;
+          height: 9px;
+          background: rgba(255, 255, 255, 0.7);
+          border-radius: 50%;
+        }
+
+        .cloud-text {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: rgba(17, 24, 39, 0.8);
+          text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8),
+            0 4px 8px rgba(0, 0, 0, 0.15);
+          white-space: nowrap;
         }
       `}</style>
     </div>
