@@ -3,6 +3,10 @@
 
 
 
+* {
+font-family: "Roboto Slab", serif;
+}
+
 /* Night mode glass navbar */
 body.theme-night .navbar {
     backdrop-filter: blur(8px);
