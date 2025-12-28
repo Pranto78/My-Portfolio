@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
+import SkillMeasurement from "../SkillMeasurement/SkillMeasurement";
 
 const skills = [
   { name: "React", img: "https://i.ibb.co/Y4TTz48V/r.jpg" },
@@ -250,6 +251,8 @@ const Skills = () => {
           ))}
         </motion.div>
       </motion.div>
+
+      <SkillMeasurement></SkillMeasurement>
     </div>
   );
 };
