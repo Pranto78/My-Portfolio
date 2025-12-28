@@ -286,7 +286,7 @@ const Navbar = () => {
             target="_blank"
             className="flex items-center gap-2 px-3 py-1 rounded-md border-none bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white hover:opacity-90 transition"
           >
-            <Github className="w-5 h-5" />
+            <Github strokeWidth={2.5} className="w-5 h-5" />
             <span>GitHub</span>
           </a>
         </div>

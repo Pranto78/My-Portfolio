@@ -77,15 +77,15 @@ const Hero = () => {
         >
           {[
             {
-              icon: <Facebook size={22} />,
+              icon: <Facebook strokeWidth={2.5} size={22} />,
               href: "https://www.facebook.com/shahriyar.pranto.2025",
             },
             {
-              icon: <Instagram size={22} />,
+              icon: <Instagram strokeWidth={2.5} size={22} />,
               href: "https://www.instagram.com/_ruthless_youngster_/",
             },
             {
-              icon: <Linkedin size={22} />,
+              icon: <Linkedin strokeWidth={2.5} size={22} />,
               href: "https://www.linkedin.com/in/md-fahim-shahriyar-pranto/",
             },
           ].map((item, index) => (
@@ -113,7 +113,7 @@ const Hero = () => {
           href="#projects"
           className="btn text-white border-none bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] hover:opacity-90"
         >
-          Hire Me <UserPlus size={20} />
+          Hire Me <UserPlus strokeWidth={4} size={15} />
         </a>
 
         <a

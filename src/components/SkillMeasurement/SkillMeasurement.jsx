@@ -65,68 +65,72 @@ const SkillMeasurement = () => {
         initial={false}
         whileHover={{
           scale: 1.06,
-          boxShadow:
-            "0 0 25px rgba(37,99,235,0.45), 0 0 60px rgba(131,141,156,0.35)",
+          boxShadow: "0 0 20px rgba(37,99,235,0.6)",
         }}
         whileTap={{ scale: 0.96 }}
         className="
     relative overflow-hidden
     w-full flex items-center justify-center gap-4
-    px-10 py-6 rounded-full
-    text-xl md:text-2xl font-bold text-white
-    bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]
-    shadow-2xl
+    px-10 py-5 rounded-full
+    text-xl md:text-2xl font-semibold
+    bg-black
   "
       >
-        {/* 🌟 Shine sweep */}
+        {/* 🔷 Animated gradient outline */}
+        <motion.span
+          className="
+      absolute inset-0 rounded-full
+      bg-gradient-to-r
+      from-[var(--gradient-start)]
+      to-[var(--gradient-end)]
+      p-[2px]
+    "
+          animate={{ opacity: [0.6, 1, 0.6] }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
+          <span className="block w-full h-full rounded-full bg-black" />
+        </motion.span>
+
+        {/* ✨ Shine sweep (kept premium) */}
         <motion.span
           className="
       pointer-events-none
       absolute inset-0
       bg-gradient-to-r
-      from-transparent via-white/40 to-transparent
+      from-transparent via-white/25 to-transparent
       -skew-x-12
     "
           initial={{ x: "-150%" }}
           animate={{ x: "150%" }}
           transition={{
-            duration: 2.8,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         />
 
-        {/* 🧊 Glass inner highlight */}
-        <span
-          className="
-      absolute inset-[2px]
-      rounded-full
-      bg-white/10
-      backdrop-blur-sm
-    "
-        />
-
-        {/* 🔮 Glow pulse */}
-        <motion.span
-          className="
-      absolute -inset-2 rounded-full
+        {/* Button content */}
+        <span className="relative z-10 flex items-center gap-4">
+          {/* Gradient text ONLY */}
+          <span
+            className="
+      text-transparent bg-clip-text
       bg-gradient-to-r
       from-[var(--gradient-start)]
       to-[var(--gradient-end)]
-      blur-xl opacity-30
+      font-semibold
     "
-          animate={{ opacity: [0.25, 0.45, 0.25] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
+          >
+            Skill Measurement
+          </span>
 
-        {/* Button Content */}
-        <span className="relative z-10 flex items-center gap-4">
-          Skill Measurement
+          {/* Icon stays normal */}
           <motion.span
             animate={{ rotate: open ? 45 : 0 }}
             transition={{ duration: 0.35, ease: "easeInOut" }}
+            className="text-[var(--gradient-start)]"
           >
-            <Plus size={28} />
+            <Plus size={26} strokeWidth={4} />
           </motion.span>
         </span>
       </motion.button>

@@ -68,7 +68,7 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="text-sm text-center text-slate-400 mt-6 md:mt-0">
-        © {new Date().getFullYear()} StylePortfolio. All rights reserved.
+        © {new Date().getFullYear()} fahim-shahriyar. All rights reserved.
       </div>
     </footer>
   );

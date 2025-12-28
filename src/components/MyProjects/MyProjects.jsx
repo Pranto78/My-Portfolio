@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
@@ -66,6 +66,31 @@ const projects = [
   },
 ];
 
+const ExpandableDescription = ({ text }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div>
+      <motion.p
+        animate={{ height: expanded ? "auto" : "4.5em" }}
+        className={`text-sm bg-clip-text text-transparent bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] overflow-hidden`}
+      >
+        {text}
+      </motion.p>
+
+      {text.length > 140 && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="mt-1 text-xs font-semibold text-[var(--gradient-start)] hover:underline"
+        >
+          {expanded ? "Read Less ▲" : "Read More ▼"}
+        </button>
+      )}
+    </div>
+  );
+};
+
+
 const MyProjects = () => {
   return (
     <div id="projects" className="min-h-screen py-12 px-6">
@@ -128,9 +153,9 @@ const MyProjects = () => {
               <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]">
                 {project.title}
               </h3>
-              <p className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]">
-                {project.description}
-              </p>
+
+              {/* Description with Read More */}
+              <ExpandableDescription text={project.description} />
 
               {/* Tech Tags */}
               <div className="flex flex-wrap gap-2">
@@ -144,8 +169,8 @@ const MyProjects = () => {
                 ))}
               </div>
 
-              {/* Buttons */}
-              <div className="flex flex-col gap-3 mt-4">
+              {/* Buttons pinned to bottom */}
+              <div className="flex flex-col gap-3 mt-auto">
                 <a
                   href={project.github}
                   target="_blank"
@@ -154,6 +179,7 @@ const MyProjects = () => {
                 >
                   <FaGithub /> Git Repository
                 </a>
+
                 <a
                   href={project.live}
                   target="_blank"
