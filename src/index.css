@@ -72,6 +72,22 @@ body.theme-night .skill-card .text-slate-700 {
     /* slate-300-ish, readable on dark bg */
 }
 
+/* Light Mode Premium Subtle Bluish Grid Background */
+/* Light (Day) Mode Premium Subtle Bluish Grid Background */
+body.theme-day {
+    background-color: #ffffff;
+    background-image:
+        linear-gradient(to right, rgba(147, 197, 253, 0.35) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(147, 197, 253, 0.35) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center;
+}
+
+/* Optional: No grid in night mode (or add a darker version if you want) */
+body.theme-night {
+    background-image: none;
+}
+
 
 .theme-toggle-pulse {
     position: relative;

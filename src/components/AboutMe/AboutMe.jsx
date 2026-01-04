@@ -34,7 +34,7 @@ const AboutMe = () => {
   };
 
   return (
-    <div id="about-me" className="min-h-screen py-12 px-6">
+    <div id="about-me" className="min-h-screen md:py-12 md:px-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -40 }}
@@ -83,6 +83,17 @@ const AboutMe = () => {
             {displayedText}
           </motion.h3>
 
+          <p
+            className="mb-4 font-bold text-2xl bg-gradient-to-r 
+              from-[var(--gradient-start)] to-[var(--gradient-end)] 
+              bg-clip-text text-transparent"
+          >
+            An aspiring Full-Stack Developer with a strong passion for software
+            engineering and building real, practical solutions. I enjoy working
+            across both frontend and backend, and I’m currently focused on
+            becoming proficient in the MERN stack.
+          </p>
+          <h1 className="text-4xl font-bold text-blue-300">My Programming Journey</h1>
           <p
             className="mb-4 font-bold text-2xl bg-gradient-to-r 
               from-[var(--gradient-start)] to-[var(--gradient-end)] 
