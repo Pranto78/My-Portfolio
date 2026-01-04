@@ -2,6 +2,37 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { UserPlus, Facebook, Instagram, Linkedin } from "lucide-react";
 
+import myPhoto from "../../assets/BFW09348-01.jpeg";
+
+// Variants for slide-in animation
+const leftSideVariants = {
+  hidden: { opacity: 0, x: -120 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      damping: 15,
+      stiffness: 100,
+      duration: 0.9,
+    },
+  },
+};
+
+const rightSideVariants = {
+  hidden: { opacity: 0, x: 120 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      damping: 15,
+      stiffness: 100,
+      duration: 0.9,
+    },
+  },
+};
+
 const Hero = () => {
   const fullName = "I'm Fahim";
   const [displayName, setDisplayName] = useState("");
@@ -33,98 +64,215 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center items-center text-center px-5"
+      className="min-h-screen flex flex-col md:flex-row items-center justify-between px-10 py-20 md:px-16 mt-15 overflow-hidden"
     >
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-primary text-xl font-medium mb-4"
-      >
-        Hello There
-      </motion.p>
-
-      <h1 className="text-4xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent">
-        {displayName}
-        <span className="border-r-4 border-primary ml-1 animate-pulse" />
-      </h1>
-
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-        className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent"
-      >
-        Full Stack Developer | MERN | React Enthusiast
-      </motion.h2>
-
-      {/* Social Icons */}
-      {/* Social Icons */}
+      {/* ================= LEFT SIDE ================= */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1 }} // show once, no repeat
-        transition={{ delay: 0.6, duration: 0.6 }}
-        className="flex gap-5 mt-2 mb-2"
+        className="md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left"
+        variants={leftSideVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
       >
-        <motion.div
-          animate={{ y: [0, -6, 0] }}
-          transition={{
-            repeat: Infinity,
-            duration: 3,
-            ease: "easeInOut",
-          }}
-          className="flex gap-5"
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-primary text-xl font-medium mb-4"
         >
-          {[
-            {
-              icon: <Facebook strokeWidth={2.5} size={22} />,
-              href: "https://www.facebook.com/shahriyar.pranto.2025",
-            },
-            {
-              icon: <Instagram strokeWidth={2.5} size={22} />,
-              href: "https://www.instagram.com/_ruthless_youngster_/",
-            },
-            {
-              icon: <Linkedin strokeWidth={2.5} size={22} />,
-              href: "https://www.linkedin.com/in/md-fahim-shahriyar-pranto/",
-            },
-          ].map((item, index) => (
-            <a
-              key={index}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 rounded-full shadow-md cursor-pointer bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]
-        text-white transition-all duration-300 hover:scale-125 hover:-rotate-3 hover:shadow-2xl"
-            >
-              {item.icon}
-            </a>
-          ))}
+          Hello There
+        </motion.p>
+
+        <h1 className="text-4xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent">
+          {displayName}
+          <span className="border-r-4 border-primary ml-1 animate-pulse" />
+        </h1>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent"
+        >
+          Full Stack Developer | MERN | React Enthusiast
+        </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="flex gap-5 mt-4 mb-4"
+        >
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            className="flex gap-5"
+          >
+            {[
+              {
+                icon: <Facebook strokeWidth={2.5} size={22} />,
+                href: "https://www.facebook.com/shahriyar.pranto.2025",
+              },
+              {
+                icon: <Instagram strokeWidth={2.5} size={22} />,
+                href: "https://www.instagram.com/_ruthless_youngster_/",
+              },
+              {
+                icon: <Linkedin strokeWidth={2.5} size={22} />,
+                href: "https://www.linkedin.com/in/md-fahim-shahriyar-pranto/",
+              },
+            ].map((item, index) => (
+              <a
+                key={index}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-full shadow-md cursor-pointer bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]
+                text-black transition-all duration-300 hover:scale-125 hover:-rotate-3 hover:shadow-2xl"
+              >
+                {item.icon}
+              </a>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.6 }}
+          className="mt-6 flex gap-4 flex-wrap justify-center md:justify-start"
+        >
+          <a
+            href="#projects"
+            className="btn text-black border-none bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]"
+          >
+            Hire Me <UserPlus strokeWidth={4} size={15} />
+          </a>
+
+          <a
+            href="https://drive.google.com/file/d/1dpJVVzb00ReFnjR-lwT2hBibVn7TXit3/view"
+            target="_blank"
+            className="btn bg-transparent border-2 border-[var(--gradient-start)] text-transparent bg-clip-text bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] hover:text-blue-400"
+          >
+            Download Resume
+          </a>
         </motion.div>
       </motion.div>
 
+      {/* ================= RIGHT SIDE (JELLY IMAGE) ================= */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="mt-8 flex gap-4 flex-wrap justify-center"
+        className="md:w-1/2 flex justify-center md:justify-end mt-14 md:mt-0"
+        variants={rightSideVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
       >
-        <a
-          href="#projects"
-          className="btn text-white border-none bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] hover:opacity-90"
+        <motion.div
+          className="relative jelly-wrapper"
+          initial="rest"
+          animate="rest"
+          whileHover="hover"
         >
-          Hire Me <UserPlus strokeWidth={4} size={15} />
-        </a>
+          {/* JELLY OUTLINE */}
+          <motion.div
+            className="jelly-outline"
+            animate={{
+              borderRadius: [
+                "42% 58% 55% 45% / 48% 52% 48% 52%",
+                "55% 45% 42% 58% / 52% 48% 52% 48%",
+                "42% 58% 55% 45% / 48% 52% 48% 52%",
+              ],
+            }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          />
 
-        <a
-          href="https://drive.google.com/file/d/1dpJVVzb00ReFnjR-lwT2hBibVn7TXit3/view?usp=sharing"
-          download="Fahim_Resume.pdf"
-          target="_blank"
-          className="btn bg-transparent border-2 border-[var(--gradient-start)] text-transparent bg-clip-text bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] hover:bg-gradient-to-r hover:text-white hover:from-[var(--gradient-start)] hover:to-[var(--gradient-end)]"
-        >
-          Download Resume
-        </a>
+          {/* IMAGE WITH JELLY MASK */}
+          <motion.img
+            src={myPhoto}
+            alt="Fahim"
+            className="relative z-10 w-[340px] h-[460px] object-cover"
+            animate={{
+              borderRadius: [
+                "38% 62% 60% 40% / 45% 55% 45% 55%",
+                "60% 40% 38% 62% / 55% 45% 55% 45%",
+                "38% 62% 60% 40% / 45% 55% 45% 55%",
+              ],
+            }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* CLOUD (FIXED POSITION) */}
+          <motion.div
+            variants={{
+              rest: { opacity: 0, y: 20, scale: 0.9 },
+              hover: { opacity: 1, y: 0, scale: 1 },
+            }}
+            transition={{ duration: 0.4 }}
+            className="absolute -top-20 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
+          >
+            <div className="cloud">
+              <span className="cloud-text">Assalamu alaikum</span>
+              <span className="cloud-tail" />
+            </div>
+          </motion.div>
+        </motion.div>
       </motion.div>
+
+      {/* ================= STYLES (UNCHANGED) ================= */}
+      <style jsx>{`
+        .jelly-wrapper {
+          padding: 18px;
+          filter: drop-shadow(0 0 40px rgba(0, 255, 200, 0.4));
+        }
+
+        .jelly-outline {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            135deg,
+            var(--gradient-start),
+            var(--gradient-end)
+          );
+          z-index: 0;
+          animation: glow 5s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+          0% {
+            box-shadow: 0 0 25px var(--gradient-start);
+          }
+          50% {
+            box-shadow: 0 0 55px var(--gradient-end);
+          }
+          100% {
+            box-shadow: 0 0 25px var(--gradient-start);
+          }
+        }
+
+        .cloud {
+          padding: 14px 24px;
+          background: white;
+          border-radius: 999px;
+          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .cloud-text {
+          font-weight: 700;
+          font-size: 1rem;
+          color: #111827;
+        }
+
+        .cloud-tail {
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          width: 14px;
+          height: 14px;
+          background: white;
+          border-radius: 50%;
+          transform: translateX(-50%);
+        }
+      `}</style>
     </section>
   );
 };

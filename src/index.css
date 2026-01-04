@@ -107,3 +107,19 @@ body.theme-night .skill-card .text-slate-700 {
         opacity: 0;
     }
 }
+
+
+html,
+body {
+    overflow-y: auto;
+    /* or 'scroll' – ensures scrolling works */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, and newer Edge */
+}
