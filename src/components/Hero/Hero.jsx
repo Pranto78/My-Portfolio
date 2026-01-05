@@ -190,7 +190,7 @@ const Hero = () => {
           <motion.img
             src={myPhoto}
             alt="Fahim"
-            className="relative z-10 w-[340px] h-[460px] object-cover"
+            className="relative z-10 w-[400px] h-[460px] object-cover"
             animate={{
               borderRadius: [
                 "38% 62% 60% 40% / 45% 55% 45% 55%",
@@ -221,7 +221,7 @@ const Hero = () => {
       {/* ================= STYLES (UNCHANGED) ================= */}
       <style jsx>{`
         .jelly-wrapper {
-          padding: 18px;
+          padding: 5px;
           filter: drop-shadow(0 0 40px rgba(0, 255, 200, 0.4));
         }
 

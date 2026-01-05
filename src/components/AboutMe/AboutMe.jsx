@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import myPhoto from "../../assets/BFW09348-01.jpeg";
+import { Code, Gamepad2, MapPin, MessageCircle } from "lucide-react";
 
 const AboutMe = () => {
   const fullText = "Who Am I ?";
@@ -67,7 +68,7 @@ const AboutMe = () => {
 
       {/* Two-column layout */}
       <div className="flex flex-col md:flex-row items-start gap-12 px-12 py-10">
-        {/* Left Side - Scroll animation */}
+        {/* Left Side */}
         <motion.div
           className="md:w-1/2 text-slate-700 dark:text-slate-300"
           initial={{ opacity: 0, y: -60 }}
@@ -93,23 +94,55 @@ const AboutMe = () => {
             across both frontend and backend, and I’m currently focused on
             becoming proficient in the MERN stack.
           </p>
-          <h1 className="text-4xl font-bold text-blue-300">My Programming Journey</h1>
-          <p
-            className="mb-4 font-bold text-2xl bg-gradient-to-r 
-              from-[var(--gradient-start)] to-[var(--gradient-end)] 
-              bg-clip-text text-transparent"
-          >
-            An aspiring Full-Stack Developer with a strong passion for software
-            engineering and building real, practical solutions. I enjoy working
-            across both frontend and backend, and I’m currently focused on
-            becoming proficient in the MERN stack.
-          </p>
+
+          <div className="flex flex-col md:flex-row gap-10 mt-6">
+            {/* Column 1 */}
+            <div className="md:w-1/2">
+              <h1 className="text-3xl font-bold text-blue-300 mb-3">
+                My Programming Journey
+              </h1>
+              <p
+                className="text-lg font-semibold bg-gradient-to-r 
+      from-[var(--gradient-start)] to-[var(--gradient-end)]
+      bg-clip-text text-transparent leading-relaxed"
+              >
+                I started exploring programming out of curiosity and it soon
+                became a passion. Over time, I built projects using JavaScript,
+                React, Node.js and modern backend technologies — constantly
+                aiming for cleaner design, better performance, and scalable
+                architecture.
+              </p>
+            </div>
+
+            {/* Divider */}
+            <div
+              className="hidden md:flex w-px bg-gradient-to-b 
+    from-[var(--gradient-start)] to-[var(--gradient-end)]"
+            ></div>
+
+            {/* Column 2 */}
+            <div className="md:w-1/2">
+              <h1 className="text-3xl font-bold text-blue-300 mb-3">
+                The Type of Work I Enjoy
+              </h1>
+              <p
+                className="text-lg font-semibold bg-gradient-to-r 
+      from-[var(--gradient-start)] to-[var(--gradient-end)]
+      bg-clip-text text-transparent leading-relaxed"
+              >
+                I love building beautiful and interactive UI experiences and
+                creating new things from scratch. I enjoy learning continuously,
+                exploring new technologies, and gaining fresh experiences that
+                help me grow as a developer. Outside of coding, I love traveling
+                and discovering new places around the world
+              </p>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Right Side - Premium zoom + fade Scroll animation */}
-        {/* Right Side - Premium zoom + fade Scroll animation */}
+        {/* Right Side - Image */}
         <motion.div
-          className="md:w-1/2 flex justify-center md:justify-end"
+          className="md:w-1/2 flex flex-col items-center gap-10"
           initial={{ opacity: 0, scale: 0.8, y: 40 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
@@ -123,7 +156,7 @@ const AboutMe = () => {
             <img
               src={myPhoto}
               alt="My Photo"
-              className="w-80 h-80 object-cover rounded-2xl"
+              className="w-100 h-100 object-cover rounded-2xl"
             />
 
             {/* Cloud Overlay */}
@@ -138,10 +171,59 @@ const AboutMe = () => {
               </div>
             </motion.div>
           </motion.div>
+
+          {/* ⭐ NEW SECTION (Centered Under Image, Not Covering Anything) */}
+          <div className="w-full flex justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-slate-300 text-center">
+              {/* Interest */}
+              <div className="flex flex-col items-center">
+                <div className="p-3 rounded-full bg-slate-800/60 border border-slate-700">
+                  <Code size={26} className="text-blue-400" />
+                </div>
+                <p className="text-xs uppercase tracking-widest text-slate-400 mt-2">
+                  Interest
+                </p>
+                <p className="text-lg font-semibold">Web Development</p>
+              </div>
+
+              {/* Hobby */}
+              <div className="flex flex-col items-center">
+                <div className="p-3 rounded-full bg-slate-800/60 border border-slate-700">
+                  <Gamepad2 size={26} className="text-blue-400" />
+                </div>
+                <p className="text-xs uppercase tracking-widest text-slate-400 mt-2">
+                  Hobby
+                </p>
+                <p className="text-lg font-semibold">Gaming</p>
+              </div>
+
+              {/* Location */}
+              <div className="flex flex-col items-center">
+                <div className="p-3 rounded-full bg-slate-800/60 border border-slate-700">
+                  <MapPin size={26} className="text-blue-400" />
+                </div>
+                <p className="text-xs uppercase tracking-widest text-slate-400 mt-2">
+                  Location
+                </p>
+                <p className="text-lg font-semibold">Rajshahi, Bangladesh</p>
+              </div>
+
+              {/* WhatsApp */}
+              <div className="flex flex-col items-center">
+                <div className="p-3 rounded-full bg-slate-800/60 border border-slate-700">
+                  <MessageCircle size={26} className="text-blue-400" />
+                </div>
+                <p className="text-xs uppercase tracking-widest text-slate-400 mt-2">
+                  WhatsApp
+                </p>
+                <p className="text-lg font-semibold">+880-1916-836881</p>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
 
-      {/* Glowing animated border */}
+      {/* Glowing border & cloud style */}
       <style jsx>{`
         @keyframes glow {
           0%,
@@ -176,7 +258,6 @@ const AboutMe = () => {
           justify-content: center;
           filter: blur(0.2px);
         }
-
 
         .cloud-tail {
           position: absolute;
