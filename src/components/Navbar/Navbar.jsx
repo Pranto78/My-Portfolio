@@ -13,6 +13,8 @@ const getLinkStyle = ({ isActive }) => {
   };
 };
 
+
+
 const SpaceCanvas = ({ enabled }) => {
   const canvasRef = useRef(null);
   const rafRef = useRef(null);
@@ -122,6 +124,9 @@ const SpaceCanvas = ({ enabled }) => {
   );
 };
 
+
+
+
 const Navbar = () => {
   const [night, setNight] = useState(() => {
     try {
@@ -191,12 +196,28 @@ const Navbar = () => {
     </>
   );
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div>
       <SpaceCanvas enabled={night} />
 
       <div
-        className="navbar shadow-sm mx-auto fixed top-0 left-0 w-full backdrop-blur-md bg-white/30 dark:bg-black/30"
+        className={`navbar shadow-sm mx-auto fixed left-0 right-0 transition-all duration-300 backdrop-blur-md
+    ${
+      scrolled
+        ? "top-4 max-w-6xl rounded-full px-6 bg-white/40 dark:bg-black/40 shadow-2xl"
+        : "top-0 w-full rounded-none bg-white/30 dark:bg-black/30"
+    }`}
         style={{ zIndex: 999 }}
       >
         <div className="navbar-start">
@@ -237,6 +258,19 @@ const Navbar = () => {
 
             <ul className="font-bold menu menu-sm dropdown-content backdrop-blur-md bg-white/30 dark:bg-black/30 rounded-box z-50 mt-3 w-52 p-2 shadow">
               {links}
+
+              <li className="lg:hidden mt-2">
+                <a
+                  href="https://github.com/Pranto78"
+                  target="_blank"
+                  className="flex items-center gap-3 w-full px-3 py-2 rounded-md
+    bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]
+    text-white"
+                >
+                  <Github strokeWidth={2.5} className="w-5 h-5" />
+                  <span>GitHub</span>
+                </a>
+              </li>
               <li className="lg:hidden mt-2">
                 <button
                   onClick={toggleTheme}
@@ -254,7 +288,6 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-
           <a className={`btn btn-ghost text-xl ${gradientTextClass}`}>
             <img className="w-12 h-8" src={logome} alt="" />
             FAHIM WEB
@@ -284,7 +317,9 @@ const Navbar = () => {
           <a
             href="https://github.com/Pranto78"
             target="_blank"
-            className="flex items-center gap-2 px-3 py-1 rounded-md border-none bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white hover:opacity-90 transition"
+            className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-md border-none
+  bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]
+  text-white hover:opacity-90 transition"
           >
             <Github strokeWidth={2.5} className="w-5 h-5" />
             <span>GitHub</span>
