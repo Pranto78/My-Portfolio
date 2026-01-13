@@ -64,7 +64,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col md:flex-row items-center justify-between px-10 py-20 md:px-16 mt-15 overflow-hidden"
+      className="relative min-h-screen flex flex-col md:flex-row items-center justify-between px-10 py-20 md:px-16 mt-15 overflow-hidden"
     >
       {/* ================= LEFT SIDE ================= */}
       <motion.div
@@ -96,58 +96,18 @@ const Hero = () => {
         >
           Full Stack Developer | MERN | React Enthusiast
         </motion.h2>
-       
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-xl md:text-xl font-semibold bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent"
+          className="text-xl md:text-sm font-semibold bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent"
         >
-          An aspiring Full-Stack Developer with a strong passion for software
-          engineering and building real, practical solutions. I enjoy working
-          across both frontend and backend, and I’m currently focused on
+          An aspiring Full-Stack Developer with a strong passion <br />for software
+          engineering and building real, practical solutions. <br />I enjoy working
+          across both frontend and backend, and I’m <br />currently focused on
           becoming proficient in the MERN stack.
         </motion.h2>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="flex gap-5 mt-4 mb-4"
-        >
-          <motion.div
-            animate={{ y: [0, -6, 0] }}
-            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-            className="flex gap-5"
-          >
-            {[
-              {
-                icon: <Facebook strokeWidth={2.5} size={22} />,
-                href: "https://www.facebook.com/shahriyar.pranto.2025",
-              },
-              {
-                icon: <Instagram strokeWidth={2.5} size={22} />,
-                href: "https://www.instagram.com/_ruthless_youngster_/",
-              },
-              {
-                icon: <Linkedin strokeWidth={2.5} size={22} />,
-                href: "https://www.linkedin.com/in/md-fahim-shahriyar-pranto/",
-              },
-            ].map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 rounded-full shadow-md cursor-pointer bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]
-                text-black transition-all duration-300 hover:scale-125 hover:-rotate-3 hover:shadow-2xl"
-              >
-                {item.icon}
-              </a>
-            ))}
-          </motion.div>
-        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -172,7 +132,57 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* ================= RIGHT SIDE (JELLY IMAGE) ================= */}
+      {/* ================= CENTER SOCIAL ICONS ================= */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.6, duration: 0.6 }}
+        className="
+          hidden md:flex
+          absolute
+          left-1/2
+          top-1/2
+          -translate-x-1/2
+          -translate-y-1/2
+          flex-col
+          gap-6
+          z-30
+        "
+      >
+        <motion.div
+          animate={{ y: [0, -6, 0] }}
+          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+          className="flex flex-col gap-6"
+        >
+          {[
+            {
+              icon: <Facebook strokeWidth={2.5} size={22} />,
+              href: "https://www.facebook.com/shahriyar.pranto.2025",
+            },
+            {
+              icon: <Instagram strokeWidth={2.5} size={22} />,
+              href: "https://www.instagram.com/_ruthless_youngster_/",
+            },
+            {
+              icon: <Linkedin strokeWidth={2.5} size={22} />,
+              href: "https://www.linkedin.com/in/md-fahim-shahriyar-pranto/",
+            },
+          ].map((item, index) => (
+            <a
+              key={index}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 rounded-full shadow-md cursor-pointer bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]
+              text-black transition-all duration-300 hover:scale-125 hover:-rotate-3 hover:shadow-2xl"
+            >
+              {item.icon}
+            </a>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* ================= RIGHT SIDE ================= */}
       <motion.div
         className="md:w-1/2 flex justify-center md:justify-end mt-14 md:mt-0"
         variants={rightSideVariants}
@@ -186,7 +196,6 @@ const Hero = () => {
           animate="rest"
           whileHover="hover"
         >
-          {/* JELLY OUTLINE */}
           <motion.div
             className="jelly-outline"
             animate={{
@@ -199,7 +208,6 @@ const Hero = () => {
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {/* IMAGE WITH JELLY MASK */}
           <motion.img
             src={myPhoto}
             alt="Fahim"
@@ -214,7 +222,6 @@ const Hero = () => {
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {/* CLOUD (FIXED POSITION) */}
           <motion.div
             variants={{
               rest: { opacity: 0, y: 20, scale: 0.9 },
@@ -231,7 +238,7 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* ================= STYLES (UNCHANGED) ================= */}
+      {/* ================= STYLES ================= */}
       <style jsx>{`
         .jelly-wrapper {
           padding: 5px;
