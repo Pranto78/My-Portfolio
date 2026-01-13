@@ -107,16 +107,16 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent mb-4"
+          className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent"
         >
           Full Stack Developer | MERN | React Enthusiast
         </motion.h2>
-
+        <div className="w-135 mb-4 h-px bg-blue-400/50" />
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-xl md:text-sm font-semibold bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent"
+          className="text-xl md:text-lg font-semibold bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent"
         >
           An aspiring Full-Stack Developer with a strong passion <br />
           for software engineering and building real, practical solutions.{" "}
