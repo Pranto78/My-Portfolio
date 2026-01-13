@@ -61,6 +61,21 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  const socialLinks = [
+    {
+      icon: <Facebook strokeWidth={2.5} size={22} />,
+      href: "https://www.facebook.com/shahriyar.pranto.2025",
+    },
+    {
+      icon: <Instagram strokeWidth={2.5} size={22} />,
+      href: "https://www.instagram.com/_ruthless_youngster_/",
+    },
+    {
+      icon: <Linkedin strokeWidth={2.5} size={22} />,
+      href: "https://www.linkedin.com/in/md-fahim-shahriyar-pranto/",
+    },
+  ];
+
   return (
     <section
       id="home"
@@ -103,10 +118,11 @@ const Hero = () => {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="text-xl md:text-sm font-semibold bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] bg-clip-text text-transparent"
         >
-          An aspiring Full-Stack Developer with a strong passion <br />for software
-          engineering and building real, practical solutions. <br />I enjoy working
-          across both frontend and backend, and I’m <br />currently focused on
-          becoming proficient in the MERN stack.
+          An aspiring Full-Stack Developer with a strong passion <br />
+          for software engineering and building real, practical solutions.{" "}
+          <br />
+          I enjoy working across both frontend and backend, and I’m <br />
+          currently focused on becoming proficient in the MERN stack.
         </motion.h2>
 
         <motion.div
@@ -132,59 +148,42 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* ================= CENTER SOCIAL ICONS ================= */}
+      {/* ================= CENTER SOCIAL ICONS (DESKTOP) ================= */}
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
-        className="
-          hidden md:flex
-          absolute
-          left-1/2
-          top-1/2
-          -translate-x-1/2
-          -translate-y-1/2
-          flex-col
-          gap-6
-          z-30
-        "
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+        className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-6 z-30"
       >
+        {/* TOP LINE */}
+        <div className="w-[2px] h-12 bg-blue-400/50 rounded-full" />
+
         <motion.div
           animate={{ y: [0, -6, 0] }}
           transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
           className="flex flex-col gap-6"
         >
-          {[
-            {
-              icon: <Facebook strokeWidth={2.5} size={22} />,
-              href: "https://www.facebook.com/shahriyar.pranto.2025",
-            },
-            {
-              icon: <Instagram strokeWidth={2.5} size={22} />,
-              href: "https://www.instagram.com/_ruthless_youngster_/",
-            },
-            {
-              icon: <Linkedin strokeWidth={2.5} size={22} />,
-              href: "https://www.linkedin.com/in/md-fahim-shahriyar-pranto/",
-            },
-          ].map((item, index) => (
+          {socialLinks.map((item, index) => (
             <a
               key={index}
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-4 rounded-full shadow-md cursor-pointer bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]
+              className="p-4 rounded-full shadow-md bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]
               text-black transition-all duration-300 hover:scale-125 hover:-rotate-3 hover:shadow-2xl"
             >
               {item.icon}
             </a>
           ))}
         </motion.div>
+
+        {/* BOTTOM LINE */}
+        <div className="w-[2px] h-12 bg-blue-400/50 rounded-full" />
       </motion.div>
 
       {/* ================= RIGHT SIDE ================= */}
       <motion.div
-        className="md:w-1/2 flex justify-center md:justify-end mt-14 md:mt-0"
+        className="md:w-1/2 flex flex-col items-center md:items-end mt-14 md:mt-0"
         variants={rightSideVariants}
         initial="hidden"
         whileInView="visible"
@@ -221,20 +220,26 @@ const Hero = () => {
             }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           />
+        </motion.div>
 
-          <motion.div
-            variants={{
-              rest: { opacity: 0, y: 20, scale: 0.9 },
-              hover: { opacity: 1, y: 0, scale: 1 },
-            }}
-            transition={{ duration: 0.4 }}
-            className="absolute -top-20 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
-          >
-            <div className="cloud">
-              <span className="cloud-text">Assalamu alaikum</span>
-              <span className="cloud-tail" />
-            </div>
-          </motion.div>
+        {/* ================= MOBILE SOCIAL ICONS ================= */}
+        <motion.div
+          animate={{ y: [0, -4, 0] }}
+          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+          className="flex md:hidden gap-5 mt-8"
+        >
+          {socialLinks.map((item, index) => (
+            <a
+              key={index}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 rounded-full shadow-md bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)]
+              text-black transition-all duration-300 hover:scale-125 hover:shadow-2xl"
+            >
+              {item.icon}
+            </a>
+          ))}
         </motion.div>
       </motion.div>
 
@@ -267,30 +272,6 @@ const Hero = () => {
           100% {
             box-shadow: 0 0 25px var(--gradient-start);
           }
-        }
-
-        .cloud {
-          padding: 14px 24px;
-          background: white;
-          border-radius: 999px;
-          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
-        }
-
-        .cloud-text {
-          font-weight: 700;
-          font-size: 1rem;
-          color: #111827;
-        }
-
-        .cloud-tail {
-          position: absolute;
-          bottom: -10px;
-          left: 50%;
-          width: 14px;
-          height: 14px;
-          background: white;
-          border-radius: 50%;
-          transform: translateX(-50%);
         }
       `}</style>
     </section>
